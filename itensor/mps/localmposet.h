@@ -71,6 +71,16 @@ class LocalMPOSet
         return R;
         }
 
+//begin{JWL}
+    std::vector<const MPO&>
+    H() const 
+        {
+        auto H = std::vector<ITensor>(lmpo_.size());
+        for(auto n : range(lmpo_)) H.at(n) = lmpo_.at(n).H();
+        return H;
+        }
+//begin{end}
+
     void
     L(std::vector<ITensor> const& nL)
         { 
